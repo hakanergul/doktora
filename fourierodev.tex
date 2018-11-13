@@ -44,10 +44,7 @@ biçiminde tanımlanır.
 \textbf{Teorem 1.} Keyfi $f, g \in L^1(\mathbb{R})$ ve $t\in \mathbb{R}$ olmak üzere aşağıdaki özellikler sağlanır:
 
 \begin{enumerate}
-\item $\widehat{(f+g)}(t)$ = $\widehat{f}(t)$ + $\widehat{g}(t)$ 
-\item Herhangi $\alpha \in \mathbb{C}$ için,
-\[ \widehat{(\alpha f)}(t) = \alpha \widehat{f}(t) \]
-dir.
+\item Herhangi $\alpha \in \mathbb{C}$ için $\widehat{(\alpha f+g)}(t)$ = $\alpha \widehat{f}(t)$ + $\widehat{g}(t)$ dir.
 \item  $\overline{f}$, $f$ fonksiyonunun karmaşık eşleniğini göstermek üzere,
 \[ \widehat{\overline{f}}(t) = \overline{\widehat{f}}(-t) \]
 olur.
@@ -64,8 +61,14 @@ dir.
 
 \textit{\textbf{İspat.}} 
 \begin{enumerate}
-	\item aa
-	\item aa
+	\item Herhangi $\alpha \in \mathbb{C}$ için 
+	\begin{eqnarray*}
+	\widehat{(\alpha f+g)}(t) &=& \int_{-\infty }^{\infty } (\alpha f + g)(x) e^{-itx}dx \\
+	&=& \int_{-\infty }^{\infty } \left[ \alpha f(x) + g(x)\right]  e^{-itx}dx \\
+	&=& \alpha \int_{-\infty }^{\infty } f(x) e^{-itx}dx + \int_{-\infty }^{\infty } g(x) e^{-itx}dx \\
+	&=& \alpha \widehat{f}(t) + \widehat{g}(t) 	
+	\end{eqnarray*}
+dir.
 	\item  Bir $f$ fonksiyonunun karmaşık eşleniğinin Fourier dönüşümü, o fonksiyonun Fourier dönüşümünün karmaşık eşleniğine eşittir:
 		\begin{eqnarray*}
 		\widehat{\overline{f}}(t)  &=&  \int_{-\infty }^{\infty } \overline{f}(x) e^{-itx}dx  \\ &=&  \int_{-\infty }^{\infty } \overline{f}(x) \overline{e^{itx}}dx\\ &=& \int_{-\infty }^{\infty } \overline{f(x)e^{itx}} dx \\ &=& \overline{\int_{-\infty }^{\infty } f(x)e^{itx} dx} \\ &=& \overline{\widehat{f}(-t)}  
@@ -89,7 +92,7 @@ dir.
 		\widehat{j}(t)  &=&  \int_{-\infty }^{\infty } j(x) e^{-itx}dx  \\ 
 		&=&  \int_{-\infty }^{\infty } f(cx) e^{-itx}dx
 		\end{eqnarray*}
-		olup $u=cx$ değişken değiştiresi yapılırsa
+		olup $u=cx$ değişken değiştirmesi yapılırsa
 		\begin{eqnarray*}
 		&=& \frac{1}{c} \int_{c (-\infty) }^{c \infty } f(u)e^{-it\frac{u}{c}} du \\   
 		\end{eqnarray*}
