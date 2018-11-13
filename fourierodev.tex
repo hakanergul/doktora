@@ -1,4 +1,4 @@
-\documentclass[a4paper, 9pt]{article}
+\documentclass[a4paper, 10pt]{article}
 \usepackage[familydefault,light]{Chivo}
 \usepackage[T1]{fontenc}
 \usepackage{mathpazo}
@@ -14,7 +14,7 @@
 \usepackage{enumitem}
 
 \setenumerate[0]{label=\roman*.}
-\title{Fourier Dönüşümü ve Özellikleri}
+\title{\textbf{Fourier Dönüşümü ve Özellikleri}}
 \author{Hakan ERGÜL\\
 Öğr. No: o182119002 \\
 \textit{Analiz ve Fonksiyonlar Teorisi Bilim Dalı}\\
@@ -35,8 +35,8 @@ Mühendislik ve bilimin birçok dalında uygulaması olan Fourier serileri, peri
 \paragraph{}
 Tanımımızı gerçel sayılar kümesinde tanımlı Lebesgue integrallenebilir fonksiyonlar uzayı $L^1(\mathbb{R})$ üzerinde vereceğiz.
 \paragraph{}
-Herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun $L^1$ normu
-\[\left \| f  \right \|_{ L^1(\mathbb{R})} = \int_{-\infty }^{\infty }\left | f(x) \right |dx\]
+Herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun $L^1$ normu 
+$$ \left \| f  \right \|_{ L^1(\mathbb{R}) } = \int_{-\infty }^{\infty }\left | f(x) \right | dx $$
 şeklinde tanımlanır. $ \left \| f  \right \|_{ L^1(\mathbb{R})}$  ifadesi yerine sadelik açısından $\left \| f  \right \|_1$ gösterimini tercih edeceğiz. Şimdi Fourier dönüşümü tanımını verelim:\\
 
 \textbf{Tanım.} İşte herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun Fourier dönüşümü $t\in \mathbb{R}$ olmak üzere,
@@ -146,7 +146,7 @@ dir. \\
 sonucunu elde ederiz. \qed
 
 \section{Girişim}
-
+\paragraph{}
 Bu başlıkta girişimin tanımını verip Fourier dönüşümü ile ilgili bir özelliğini vereceğiz.
 
 \textbf{Tanım} $f,g \in L^1(\mathbb{R})$ olmak üzere $f$ ve $g$ fonksiyonlarının girişimi
@@ -154,7 +154,6 @@ Bu başlıkta girişimin tanımını verip Fourier dönüşümü ile ilgili bir 
  \left( f\ast g \right) (x) &=& \int_{- \infty}^{\infty} f(y) g(x-y) dy
 \end{eqnarray*}
 şeklinde tanımlanır. Girişimin, değişmelilik özelliği vardır. Gerçekten tanımda verilen integralde $t=x-y$ değişken değiştirmesi yapılırsa $g\ast f$ elde edilir.
-
 \paragraph{}
 $f,g \in L^1(\mathbb{R})$ olarak aldığımızda bu iki fonksiyonun girişimlerinin Fourier dönüşümü, Fourier dönüşümlerinin çarpımına eşittir. Yani Fourier dönüşümü sayesinde girişim işlemi uygulanmakta zorluk çekilen durumlarda, fonksiyonların Fourier dönüşümlerini çarpıp daha sonra ters Fourier dönüşümü uygulamak işimizi kolaylaştırabilir. Şimdi bu özelliği ifade eden teoremi verelim:
 
@@ -165,10 +164,48 @@ dir. \\
 Öncelikle $\left( f\ast g \right) \in L^1(\mathbb{R})$ olduğunu gösterelim. $f, g \in L^1(\mathbb{R})$ olmak üzere
 	\begin{eqnarray*} 
 		\int_{-\infty}^{\infty} \left| \left( f\ast g \right)(x) \right|dx &=&  \int_{-\infty}^{\infty} \left| \int_{-\infty}^{\infty} f(x-u)g(u)du \right|dx \\
-		&\leq&  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \left| f(x-u)g(u) \right| du dx \\   
-		&=& -\widehat{f}(-t) 
+		&\leq &  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \left| f(x-u)g(u) \right| du dx 
 	\end{eqnarray*}
+olup çift katlı integral mutlak yakınsak olduğundan Fubini Teoremi'nden integral alma sırasını değiştirebiliriz. Yani
+	\begin{eqnarray*}
+	&=&  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \left| f(x-u)g(u) \right| dx du \\
+	&=&  \int_{-\infty}^{\infty} g(u) \underbrace{\left( \int_{-\infty}^{\infty} \left| f(x-u) \right| dx \right) }_{\left \| f \right \|_{1}} du \\
+	&=&  \int_{-\infty}^{\infty} g(u)\left \| f \right \|_{1} du \\
+	&=& \left \| f \right \|_{1} \underbrace{\int_{-\infty}^{\infty} g(u) du}_{{\left \| g \right \|}_{1}} \\
+	&=& \left \| f \right \|_{1}\left \| g \right \|_{1}
+	\end{eqnarray*}
+elde edilir. Eşitsizliğin sol tarafındaki integralin sonlu olmasından dolayı $f\ast g \in L^1(\mathbb{R})$ dir. 
+Şimdi $ \widehat{\left( f\ast g \right)}(t) = \widehat{f}(t) + \widehat{g}(t)  $ olduğunu gösterelim:
+	\begin{eqnarray*}
+	\widehat{\left( f\ast g \right)}(t) &=& \int_{-\infty}^{\infty}  \left( f\ast g \right)(x)  e^{-itx} dx\\
+	 &=&  \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty}  f(x-u)g(u) du \right] e^{-itx} dx 
+	\end{eqnarray*}
+yine integral mutlak yakınsak olduğu için integral alma sırasını değiştirirsek
+	\begin{eqnarray*}
+	 &=& \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} f(x-u)g(u) e^{-itx} dx \right] du \\
+	 &=&  \int_{-\infty}^{\infty} g(u) e^{-itu} \left[ \int_{-\infty}^{\infty}  f(x-u)e^{-itx} e^{itu} dx \right] du \\
+	 &=&  \int_{-\infty}^{\infty} g(u) e^{-itu} \underbrace{\left[ \int_{-\infty}^{\infty}  f(x-u)e^{-it(x-u)} dx \right]}_{\widehat{f}(t)} du \\
+	 &=&  \widehat{f}(t) \underbrace{\int_{-\infty}^{\infty} g(u) e^{-itu} du}_{\widehat{g}(t)} \\
+	 &=&  \widehat{f}(t)\widehat{g}(t)	 
+	\end{eqnarray*}
+sonucunu buluruz.\qed
 
+\begin{thebibliography}{9}
+\bibitem{MONT}
+Hugh L. Montgomery,
+\textit{Early Fourier Analysis},
+AMS,
+390 sf.,
+2014
+
+\bibitem{KATZ}
+Yitzhak Katznelson,
+\textit{An Introduction to Harmonic Analysis},
+Cambridge University Press,
+287 sf.,
+2002
+
+\end{thebibliography}
 
 
 \end{document}
