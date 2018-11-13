@@ -1,8 +1,8 @@
 \documentclass[a4paper, 9pt]{article}
-\usepackage{libertine}
+\usepackage[familydefault,regular]{Chivo}
 \usepackage[T1]{fontenc}
 \usepackage{mathpazo}
-\renewcommand{\baselinestretch}{1.1} 
+\renewcommand{\baselinestretch}{1.2} 
 
 \usepackage[utf8]{inputenc}
 \usepackage[turkish]{babel}
@@ -142,5 +142,22 @@ dir. \\
 		&=& \left \| f \right \|_{1}
 	\end{eqnarray*}
 sonucunu elde ederiz. \qed
-		
+
+\section{Girişim}
+
+Bu başlıkta girişimin tanımını verip Fourier dönüşümü ile ilgili bir özelliğini vereceğiz.
+
+\textbf{Tanım} $f,g \in L^1(\mathbb{R})$ olmak üzere $f$ ve $g$ fonksiyonlarının girişimi
+\begin{eqnarray*} 
+ \left( f\ast g \right) (x) &=& \int_{- \infty}^{\infty} f(y) g(x-y) dy\\
+ &=& \int_{- \infty}^{\infty} f(x-y) g(y) dy
+\end{eqnarray*}
+şeklinde tanımlanır.
+
+\paragraph{}
+$f,g \in L^1(\mathbb{R})$ olarak aldığımızda bu iki fonksiyonun girişimlerinin Fourier dönüşümü, Fourier dönüşümlerinin çarpımına eşittir. Yani Fourier dönüşümü sayesinde girişim işlemi uygulanmakta zorluk çekilen durumlarda, fonksiyonların Fourier dönüşümlerini çarpıp daha sonra ters Fourier dönüşümü uygulamak işimizi kolaylaştırabilir. Şimdi bu özelliği ifade eden teoremi verelim:
+
+\textbf{Teorem 4.} Keyfi $f,g \in L^1(\mathbb{R})$ fonksiyonları için $\left( f\ast g \right) \in L^1(\mathbb{R})$ dir. Ayrıca
+
+
 \end{document}
