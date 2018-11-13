@@ -1,5 +1,5 @@
 \documentclass[a4paper, 9pt]{article}
-\usepackage[familydefault,regular]{Chivo}
+\usepackage[familydefault,light]{Chivo}
 \usepackage[T1]{fontenc}
 \usepackage{mathpazo}
 \renewcommand{\baselinestretch}{1.2} 
@@ -11,8 +11,9 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}
-\usepackage{hyperref}
+\usepackage{enumitem}
 
+\setenumerate[0]{label=\roman*.}
 \title{Fourier Dönüşümü ve Özellikleri}
 \author{Hakan ERGÜL\\
 Öğr. No: o182119002 \\
@@ -27,15 +28,16 @@
 
 \section{Giriş}
 
+\paragraph{}
 Mühendislik ve bilimin birçok dalında uygulaması olan Fourier serileri, periyodik fonksiyonların sinüs ve kosinüs fonksiyonlarının (sonsuz) toplamı olarak yazılabilmesinde kullanılır. Fakat periyodik olmayan fonksiyonların bu şekilde periyodik fonksiyonların toplamı olarak ifade edilmesinde Fourier serileri yetersiz kalmaktadır. İşte burada Fourier dönüşümü kullanılmaktadır. Öncelikle Fourier dönüşümünün tanımını ve temel özelliklerini ifade edeceğiz.
 
 \section{Tanımı}
-
+\paragraph{}
 Tanımımızı gerçel sayılar kümesinde tanımlı Lebesgue integrallenebilir fonksiyonlar uzayı $L^1(\mathbb{R})$ üzerinde vereceğiz.
-
+\paragraph{}
 Herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun $L^1$ normu
 \[\left \| f  \right \|_{ L^1(\mathbb{R})} = \int_{-\infty }^{\infty }\left | f(x) \right |dx\]
-şeklinde tanımlanır. $ \left \| f  \right \|_{ L^1(\mathbb{R})}$  ifadesi yerine sadelik açısından $\left \| f  \right \|_1$ gösterimini tercih edeceğiz.
+şeklinde tanımlanır. $ \left \| f  \right \|_{ L^1(\mathbb{R})}$  ifadesi yerine sadelik açısından $\left \| f  \right \|_1$ gösterimini tercih edeceğiz. Şimdi Fourier dönüşümü tanımını verelim:\\
 
 \textbf{Tanım.} İşte herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun Fourier dönüşümü $t\in \mathbb{R}$ olmak üzere,
 \[  \widehat{f}(t)=\int_{-\infty }^{\infty }f(x)e^{-itx}dx  \]
@@ -43,7 +45,7 @@ biçiminde tanımlanır.
 
 \section{Özellikleri}
 
-	Fourier dönüşümünün özelliklerini aşağıdaki teoremle verelim:
+\paragraph{} Fourier dönüşümünün özelliklerini aşağıdaki teoremle verelim:
 
 \textbf{Teorem 1.} Keyfi $f, g \in L^1(\mathbb{R})$ ve $t\in \mathbb{R}$ olmak üzere aşağıdaki özellikler sağlanır:
 
@@ -117,7 +119,7 @@ dir.
 		bulunur.\qed
 \end{enumerate}
 
-Şimdi bir $f$ fonksiyonunun tek olması halinde, fonksiyonun Fourier dönüşümü olan $\widehat{f}$ nin de tek olacağınız göstereceğiz. Benzer durum çift olmaları halinde de geçerlidir.
+Yukarıdaki teoremde Fourier dönüşümünün bazı özelliklerini verdik. Aşağıdaki teoremle bir $f\in L^1(\mathbb{R})$ fonksiyonunun tek olması halinde, fonksiyonun Fourier dönüşümü olan $\widehat{f}$ nin de tek olacağını göstereceğiz. Benzer durum çift olmaları halinde de geçerlidir.
 
 \textbf{Teorem 2.} Keyfi $f \in L^1(\mathbb{R})$ tek ise  $\widehat{f}$ de tektir.\\
 \textit{\textbf{İspat.}} 
@@ -149,15 +151,24 @@ Bu başlıkta girişimin tanımını verip Fourier dönüşümü ile ilgili bir 
 
 \textbf{Tanım} $f,g \in L^1(\mathbb{R})$ olmak üzere $f$ ve $g$ fonksiyonlarının girişimi
 \begin{eqnarray*} 
- \left( f\ast g \right) (x) &=& \int_{- \infty}^{\infty} f(y) g(x-y) dy\\
- &=& \int_{- \infty}^{\infty} f(x-y) g(y) dy
+ \left( f\ast g \right) (x) &=& \int_{- \infty}^{\infty} f(y) g(x-y) dy
 \end{eqnarray*}
-şeklinde tanımlanır.
+şeklinde tanımlanır. Girişimin, değişmelilik özelliği vardır. Gerçekten tanımda verilen integralde $t=x-y$ değişken değiştirmesi yapılırsa $g\ast f$ elde edilir.
 
 \paragraph{}
 $f,g \in L^1(\mathbb{R})$ olarak aldığımızda bu iki fonksiyonun girişimlerinin Fourier dönüşümü, Fourier dönüşümlerinin çarpımına eşittir. Yani Fourier dönüşümü sayesinde girişim işlemi uygulanmakta zorluk çekilen durumlarda, fonksiyonların Fourier dönüşümlerini çarpıp daha sonra ters Fourier dönüşümü uygulamak işimizi kolaylaştırabilir. Şimdi bu özelliği ifade eden teoremi verelim:
 
-\textbf{Teorem 4.} Keyfi $f,g \in L^1(\mathbb{R})$ fonksiyonları için $\left( f\ast g \right) \in L^1(\mathbb{R})$ dir. Ayrıca
+\textbf{Teorem 4.} Keyfi $f,g \in L^1(\mathbb{R})$ fonksiyonları için $\left( f\ast g \right) \in L^1(\mathbb{R})$ dir. Ayrıca 
+$$ \widehat{\left( f\ast g \right)}(t) = \widehat{f}(t) + \widehat{g}(t)  $$
+dir. \\
+\textit{\textbf{İspat.}} 
+Öncelikle $\left( f\ast g \right) \in L^1(\mathbb{R})$ olduğunu gösterelim. $f, g \in L^1(\mathbb{R})$ olmak üzere
+	\begin{eqnarray*} 
+		\int_{-\infty}^{\infty} \left| \left( f\ast g \right)(x) \right|dx &=&  \int_{-\infty}^{\infty} \left| \int_{-\infty}^{\infty} f(x-u)g(u)du \right|dx \\
+		&\leq&  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \left| f(x-u)g(u) \right| du dx \\   
+		&=& -\widehat{f}(-t) 
+	\end{eqnarray*}
+
 
 
 \end{document}
