@@ -1,0 +1,139 @@
+\documentclass[a4paper, 9pt]{article}
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\renewcommand{\baselinestretch}{1.1} 
+
+\usepackage[utf8]{inputenc}
+\usepackage[turkish]{babel}
+\usepackage{fullpage}
+\usepackage{parskip} 
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+\title{Fourier Dönüşümü}
+\author{Hakan ERGÜL}
+\date{16/11/2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Giriş}
+
+Mühendislik ve bilimin birçok dalında uygulaması olan Fourier serileri, periyodik fonksiyonların sinüs ve kosinüs fonksiyonlarının (sonsuz) toplamı olarak yazılabilmesinde kullanılır. Fakat periyodik olmayan fonksiyonların bu şekilde periyodik fonksiyonların toplamı olarak ifade edilmesinde Fourier serileri yetersiz kalmaktadır. İşte burada Fourier dönüşümü kullanılmaktadır. Öncelikle Fourier dönüşümünün tanımını ve temel özelliklerini ifade edeceğiz.
+
+\section{Tanımı}
+
+Tanımımızı gerçel sayılar kümesinde tanımlı Lebesgue integrallenebilir fonksiyonlar uzayı $L^1(\mathbb{R})$ üzerinde vereceğiz.
+
+Herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun $L^1$ normu
+\[\left \| f  \right \|_{ L^1(\mathbb{R})} = \int_{-\infty }^{\infty }\left | f(x) \right |dx\]
+şeklinde tanımlanır. $ \left \| f  \right \|_{ L^1(\mathbb{R})}$  ifadesi yerine sadelik açısından $\left \| f  \right \|_1$ gösterimini tercih edeceğiz.
+
+\textbf{Tanım.} İşte herhangi bir $f \in L^1(\mathbb{R})$ fonksiyonunun Fourier dönüşümü $t\in \mathbb{R}$ olmak üzere,
+\[  \widehat{f}(t)=\int_{-\infty }^{\infty }f(x)e^{-itx}dx  \]
+biçiminde tanımlanır.
+
+\section{Özellikleri}
+
+	Fourier dönüşümünün özelliklerini aşağıdaki teoremle verelim:
+
+\textbf{Teorem 1.} Keyfi $f, g \in L^1(\mathbb{R})$ ve $t\in \mathbb{R}$ olmak üzere aşağıdaki özellikler sağlanır:
+
+\begin{enumerate}
+\item $\widehat{(f+g)}(t)$ = $\widehat{f}(t)$ + $\widehat{g}(t)$ 
+\item Herhangi $\alpha \in \mathbb{C}$ için,
+\[ \widehat{(\alpha f)}(t) = \alpha \widehat{f}(t) \]
+dir.
+\item  $\overline{f}$, $f$ fonksiyonunun karmaşık eşleniğini göstermek üzere,
+\[ \widehat{\overline{f}}(t) = \overline{\widehat{f}}(-t) \]
+olur.
+\item  Bir $a \in \mathbb{R}$  sayısı alalım. Her $x\in \mathbb{R}$  için $g(x)=f(x+a)$ ise $g\in L^1(\mathbb{R})$ ve her $t\in \mathbb{R}$ için 
+\[ \widehat{g}(t) = e^{iat}\widehat{f}(t)\]
+dir.
+\item Bir $b\in \mathbb{R}$ sabit sayısı alalım. Her $x\in \mathbb{R}$ için $h(x)=f(x)e^{bx}$ ise $h\in L^1(\mathbb{R})$ ve her $t\in \mathbb{R}$ için
+\[ \widehat{h}(t) = \widehat{f}(t-b) \]
+dir.
+\item $c$ sıfırdan farklı bir gerçel sayı ve her $x \in \mathbb{R}$ için $j(x)=f(cx)$ ise $j\in L^1(\mathbb{R})$ ve her $t\in \mathbb{R}$ için
+\[ \widehat{j}(t)=\frac{\widehat{f}(t/c)}{\left |  c \right |} \] dir.
+
+\end{enumerate}
+
+\textit{\textbf{İspat.}} 
+\begin{enumerate}
+	\item aa
+	\item aa
+	\item  Bir $f$ fonksiyonunun karmaşık eşleniğinin Fourier dönüşümü, o fonksiyonun Fourier dönüşümünün karmaşık eşleniğine eşittir:
+		\begin{eqnarray*}
+		\widehat{\overline{f}}(t)  &=&  \int_{-\infty }^{\infty } \overline{f}(x) e^{-itx}dx  \\ &=&  \int_{-\infty }^{\infty } \overline{f}(x) \overline{e^{itx}}dx\\ &=& \int_{-\infty }^{\infty } \overline{f(x)e^{itx}} dx \\ &=& \overline{\int_{-\infty }^{\infty } f(x)e^{itx} dx} \\ &=& \overline{\widehat{f}(-t)}  
+		\end{eqnarray*}
+	elde edilir.
+	
+	\item İntegralde değişken değiştirme yapacağız, yani $y=x+a$ dersek
+		\begin{eqnarray*}
+		\widehat{g}(t)  &=&  \int_{-\infty }^{\infty } g(x) e^{-itx}dx  \\ &=&  \int_{-\infty }^{\infty } {f}(x+a) e^{-itx}dx\\ &=& \int_{-\infty }^{\infty } f(y)e^{-it(y-a)} dy \\ &=& e^{iat}\int_{-\infty }^{\infty } f(y)e^{-ity} dy \\ &=& e^{iat}\widehat{f}(t)  
+		\end{eqnarray*}
+		bulunur.
+		
+	\item $h(x)=f(x)e^{ibx}$ verilmiş. O halde
+		\begin{eqnarray*}
+		\widehat{h}(t)  &=&  \int_{-\infty }^{\infty } h(x) e^{-itx}dx  \\ &=&  \int_{-\infty }^{\infty } {f}(x)e^{ibx} e^{-itx}dx\\ &=& \int_{-\infty }^{\infty } f(x)e^{-i(t-b)x} dx \\ &=& \widehat{f}(t-b)  
+		\end{eqnarray*}
+		olur.
+
+	\item Bir $c$ sıfırdan farklı gerçel sayısı için $j(x)=f(cx)$ verilmiş. Buradan
+		\begin{eqnarray*}
+		\widehat{j}(t)  &=&  \int_{-\infty }^{\infty } j(x) e^{-itx}dx  \\ 
+		&=&  \int_{-\infty }^{\infty } f(cx) e^{-itx}dx
+		\end{eqnarray*}
+		olup $u=cx$ değişken değiştiresi yapılırsa
+		\begin{eqnarray*}
+		&=& \frac{1}{c} \int_{c (-\infty) }^{c \infty } f(u)e^{-it\frac{u}{c}} du \\   
+		\end{eqnarray*}
+		olur. Fakat burada integralin sınırları $c$ nin işaretine göre değişir. Eğer $c>0$ ise
+		\begin{eqnarray*}
+		&=& \frac{1}{c} \int_{c (-\infty) }^{c \infty } f(u)e^{-it\frac{u}{c}} du \\   
+		&=& \frac{1}{c} \int_{-\infty }^{\infty } f(u)e^{-it\frac{u}{c}} du \\  
+		&=& \frac{1}{c} \widehat{f}(\frac{t}{c}) 
+		\end{eqnarray*}
+		tersine $c<0$ ise
+		\begin{eqnarray*}
+		&=& \frac{1}{c} \int_{c (-\infty) }^{c \infty } f(u)e^{-it\frac{u}{c}} du \\   
+		&=& \frac{1}{c} \int_{\infty }^{-\infty } f(u)e^{-it\frac{u}{c}} du \\  
+		&=& -\frac{1}{c} \widehat{f}(\frac{t}{c}) 
+		\end{eqnarray*}
+		elde edilir. Sonuç olarak
+		$$ \widehat{j}(t) = \frac{1}{\left | c \right |} \widehat{f}(\frac{t}{c}) $$
+		bulunur.\qed
+\end{enumerate}
+
+Şimdi bir $f$ fonksiyonunun tek olması halinde, fonksiyonun Fourier dönüşümü olan $\widehat{f}$ nin de tek olacağınız göstereceğiz. Benzer durum çift olmaları halinde de geçerlidir.
+
+\textbf{Teorem 2.} Keyfi $f \in L^1(\mathbb{R})$ tek ise  $\widehat{f}$ de tektir.\\
+\textit{\textbf{İspat.}} 
+Herhangi bir $f \in L^1(\mathbb{R})$ tek fonksiyonu alalım. Buradan	$\widehat{f}(t) =  \int_{-\infty }^{\infty } f(x) e^{-itx}dx$ olduğunu biliyoruz. İntegralde $y=-x$ değişken değiştirmesi yaparsak  
+	\begin{eqnarray*} 
+		\widehat{f}(t) &=&  \int_{-\infty }^{\infty } f(x) e^{-itx}dx\\
+		&=& - \int_{-\infty }^{ \infty } f(-y)e^{-it(-y)} dy \\   
+		&=& -\widehat{f}(-t) 
+	\end{eqnarray*}
+Benzer olarak $f$ çift olduğunda $\widehat{f}$ nin de çift olacağı gösterilebilir.\qed
+
+\textbf{Teorem 3.} Herhangi bir $f\in L^1(\mathbb{R})$ ve bu fonksiyonun Fourier dönüşümü $\widehat{f}$ verilsin. O halde
+
+$$ \left| \widehat{f}(t) \right| \leq \int_{-\infty}^{\infty} \left| f(x) \right| dx = \left \| f \right \|_{1}  $$
+dir. \\
+\textit{\textbf{İspat.}} Biliyoruz ki bir $f \in L^1(\mathbb{R})$ fonksiyonu için $\widehat{f}(t) =  \int_{-\infty }^{\infty } f(x) e^{-itx}dx$ dir. Her iki tarafın mutlak değerini alırsak
+	\begin{eqnarray*} 
+		\left| \widehat{f}(t) \right| &=& \left| \int_{-\infty }^{\infty } f(x) e^{-itx}dx \right| \\
+		&\leq &  \int_{-\infty }^{ \infty } \left| f(x)e^{-it(x)} \right| dx \\   
+		&=& \int_{- \infty}^{\infty} \left| f(x) \right| \underbrace{\left| e^{-itx} \right| }_{1} dx \\
+		&=& \int_{- \infty}^{\infty} \left| f(x) \right| dx \\
+		&=& \left \| f \right \|_{1}
+	\end{eqnarray*}
+sonucunu elde ederiz. \qed
+		
+\end{document}
